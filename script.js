@@ -16,36 +16,39 @@ function multiply(a,b){
     return a*b
 }
 
+let prevOp = ''
+let prevNum = ''
+let displayValue = ''
 
+function operate(prev, operator, current) {
+    prev = Number(prev);
+    current = Number(current);
 
-function operate(prev,operator,number1){
-    if (operator = "add"){
-        return add(number,number1);
-    } else if (operator = "subtract"){
-        return subtract(number,number1);
-    } else if (operator = "divide"){
-        return divide(number,number1);
-    } else if (operator = "multiply"){
-        return multiply(number,number1)
+    if (operator === "add") {
+        return add(prev, current);
+    } else if (operator === "subtract") {
+        return subtract(prev, current);
+    } else if (operator === "divide") {
+        return divide(prev, current);
+    } else if (operator === "multiply") {
+        return multiply(prev, current);
     } else {
-        return 'error'
+        return 'error';
     }
 }
 
-
-let previous = null;
-let operator = null;
-let displayValue = '';
 
 let clear = document.getElementById('clear')
 
 
 let display = document.getElementById('innerDisplayBottomText')
+let displayTop = document.getElementById('innerDisplayTopText')
 
 
 clear.addEventListener('click', () => { // clear all
     displayValue = ''
     display.textContent = 0
+    displayTop.textContent = ''
 });
 
 
@@ -56,6 +59,33 @@ document.querySelectorAll('.number').forEach(btn => {
     })
 })
 
+
+
+document.querySelectorAll('.operator').forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (btn.textContent == '÷'){
+            prevOp = 'divide';
+            prevNum = display.textContent
+            displayTop.textContent = prevNum + ' ÷ '
+            displayValue = '';
+        } else if (btn.textContent == 'x'){
+            prevOp = 'multiply';
+            prevNum = display.textContent
+            displayTop.textContent = prevNum + ' x '
+            displayValue = '';
+        } else if (btn.textContent == '-'){
+            prevOp = 'subtract';
+            prevNum = display.textContent
+            displayTop.textContent = prevNum + ' - '
+            displayValue = '';
+        } else if (btn.textContent == '+'){
+            prevOp = 'add';
+            prevNum = display.textContent
+            displayTop.textContent = prevNum + ' + '
+            displayValue = '';
+        }
+    })
+})
 
 
 

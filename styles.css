@@ -58,6 +58,14 @@ button {
     width: 100%;
     height: 35%;
     background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#innerDisplayTop h1 {
+    padding: 24px;
+    font-size: 32px;
 }
 
 #innerDisplayBottom {
