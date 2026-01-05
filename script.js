@@ -87,7 +87,12 @@ document.querySelectorAll('.operator').forEach(btn => {
     })
 })
 
-
+let equals = document.getElementById('equals')
+equals.addEventListener('click', () => {
+    let result = operate(prevNum,prevOp,displayValue)
+    display.textContent = result
+    displayTop.textContent = ''
+})
 
 // breakdown
 // when button is pressed it shows on screen until clear
