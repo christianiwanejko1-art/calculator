@@ -63,7 +63,10 @@ document.querySelectorAll('.number').forEach(btn => {
 
 document.querySelectorAll('.operator').forEach(btn => {
     btn.addEventListener('click', () => {
-        if (btn.textContent == '÷'){
+        if (btn.textContent == '=' && prevNum != ''){
+            let result = operate(prevNum,prevOp,displayValue)
+            display.textContent = result
+        }  else if (btn.textContent == '÷'){
             prevOp = 'divide';
             prevNum = display.textContent
             displayTop.textContent = prevNum + ' ÷ '
